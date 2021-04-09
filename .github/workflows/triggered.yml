@@ -1,4 +1,5 @@
 name: Triggered
+on: [push]
 
 jobs:
   test:
