@@ -1,9 +1,10 @@
 name: Triggered
-on: [push]
+on: 
+  repository_dispatch:
+    types: [ build_successful ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name:
         run: echo Triggered
