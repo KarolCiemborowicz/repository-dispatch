@@ -1,0 +1,8 @@
+name: Triggered
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name:
+        run: echo Triggered
