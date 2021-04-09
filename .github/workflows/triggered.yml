@@ -1,7 +1,7 @@
 name: Triggered
 on: 
   repository_dispatch:
-    types: [ build_successful ]
+    types: [ "build_successful" ]
 
 jobs:
   test:
