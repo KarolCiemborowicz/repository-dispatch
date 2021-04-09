@@ -9,7 +9,7 @@ jobs:
           curl
           --request POST
           --url https://api.github.com/repos/${{ github.repository }}/dispatches
-          --header 'authorization: token ${{ secrets.GITHUB_TOKEN }}'
+          --header 'authorization: token ${{ secrets.PAT }}'
           --header 'accept: application/vnd.github.v3+json'
           --data '{
             "event_type": "build_successful",
