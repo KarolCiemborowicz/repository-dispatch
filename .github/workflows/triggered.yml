@@ -10,9 +10,10 @@ on:
         description: "Image version to be deployed" 
         required: true
       
-
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-        - run: echo Triggered
+        - run: |          
+          echo "Registry: ${{ github.events.inputs.image_registry }}"
+          echo "Tag: ${{ github.events.inputs.image_tag }}"
