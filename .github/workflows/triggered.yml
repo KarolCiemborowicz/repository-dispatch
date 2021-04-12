@@ -16,4 +16,7 @@ jobs:
     steps:
     - run: |
         echo "Registry: ${{ github.event.inputs.image_registry }}"
-        echo "Tag: ${{ github.event.inputs.image_tag }}"
+        echo "Registry: ${{ github.event.inputs.image_registry }}"
+        echo "Registry: ${{ github.event.client_payload.repo }}"
+        echo "Registry: ${{ github.event.client_payload.image_registry }}"
+        echo "Registry: ${{ github.event.client_payload.image_tag }}"
