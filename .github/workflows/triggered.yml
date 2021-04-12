@@ -2,6 +2,14 @@ name: Triggered
 on: 
   repository_dispatch:
     types: [ "build_successful" ]
+    inputs:
+      image_registry:
+        description: "Source image registry"
+        required: true
+      image_tag:
+        description: "Image version to be deployed" 
+        required: true
+      
 
 jobs:
   test:

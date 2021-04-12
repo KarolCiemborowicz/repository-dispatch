@@ -14,6 +14,8 @@ jobs:
           --data '{
             "event_type": "build_successful",
             "client_payload": {
-                "repo": "${{ github.repository }}"
+                "repo": "${{ github.repository }}",
+                "image_registry": "registry",
+                "image_tag": "tag"
               }
             }'
