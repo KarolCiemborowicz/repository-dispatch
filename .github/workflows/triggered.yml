@@ -1,6 +1,6 @@
 name: Triggered
 on: 
-  repository_dispatch:
+  workflow_dispatch:
     types: [ "build_successful" ]
     inputs:
       image_registry:
