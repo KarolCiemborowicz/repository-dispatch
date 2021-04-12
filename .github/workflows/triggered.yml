@@ -14,9 +14,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo "Registry: ${{ github.event.inputs.image_registry }}"
-        echo "Registry: ${{ github.event.inputs.image_registry }}"
-        echo "Registry: ${{ github.event.client_payload.repo }}"
-        echo "Registry: ${{ github.event.client_payload.image_registry }}"
-        echo "Registry: ${{ github.event.client_payload.image_tag }}"
+    - run: |                
+        echo "Registry: ${{ github.event.image_registry }}"
+        echo "Tag: ${{ github.event.image_tag }}"
+        echo "Registry (manual input): ${{ github.event.inputs.image_registry }}"
+        echo "Tag (manual input): ${{ github.event.inputs.image_tag }}"

@@ -13,9 +13,6 @@ jobs:
           --header 'accept: application/vnd.github.v3+json'
           --data '{
             "event_type": "build_successful",
-            "client_payload": {
-                "repo": "${{ github.repository }}",
-                "image_registry": "registry",
-                "image_tag": "tag"
-              }
+            "image_registry": "registry",
+            "image_tag": "tag"
             }'
