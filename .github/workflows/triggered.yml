@@ -1,7 +1,8 @@
 name: Triggered
 on: 
-  workflow_dispatch:
+  repository_dispatch:
     types: [ "build_successful" ]
+  workflow_dispatch:    
     inputs:
       image_registry:
         description: "Source image registry"
