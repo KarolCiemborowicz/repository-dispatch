@@ -2,6 +2,7 @@ name: Triggered
 on: 
   repository_dispatch:
     types: [ "build_successful" ]
+    
   workflow_dispatch:    
     inputs:
       image_registry:
