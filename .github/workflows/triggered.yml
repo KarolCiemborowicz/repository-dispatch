@@ -14,6 +14,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-        - run: |          
-          echo "Registry: ${{ github.events.inputs.image_registry }}"
-          echo "Tag: ${{ github.events.inputs.image_tag }}"
+    - run: |
+        echo "Registry: ${{ github.events.inputs.image_registry }}"
+        echo "Tag: ${{ github.events.inputs.image_tag }}"
