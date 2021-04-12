@@ -9,10 +9,9 @@ jobs:
           curl
           --request POST
           --url https://api.github.com/repos/${{ github.repository }}/dispatches
-          --fail-with-body
           --header 'authorization: token ${{ secrets.PAT }}'
           --header 'accept: application/vnd.github.v3+json'
-          --data '{asd
+          --data '{
             "event_type": "build_successful",
             "client_payload": {                
                 "image_registry": "registry",
