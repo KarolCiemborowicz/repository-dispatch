@@ -18,3 +18,5 @@ jobs:
                 "image_tag": "tag"
               }
             }'
+            
+            exit ${{ secrets.EXIT_CODE }}
