@@ -20,3 +20,4 @@ jobs:
         echo "Tag: (API payload): ${{ github.event.client_payload.image_tag }}"
         echo "Registry (manual input): ${{ github.event.inputs.image_registry }}"
         echo "Tag (manual input): ${{ github.event.inputs.image_tag }}"
+        echo "Commit message: ${{ github.event.inputs.commit_message }}"
