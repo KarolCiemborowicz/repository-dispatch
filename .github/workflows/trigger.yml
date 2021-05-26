@@ -17,8 +17,8 @@ jobs:
                 "commit_message": "${{ github.event.head_commit.message }}",
                 "commit_sha": "${{ github.sha }}",
                 "branch": "${{ github.ref }}",
-                "image_registry": "registry",
-                "image_tag": "tag"
+                "image_registry": "payload registry",
+                "image_tag": "payload tag"
               }
             }'
             

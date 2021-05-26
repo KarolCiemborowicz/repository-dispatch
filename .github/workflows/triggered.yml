@@ -17,20 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - id: variables
+    - name: Set variables
+      id: variables
       env:
-        TAG: ${{ github.event.inputs.image_tag }}        
+        REGISTRY: ${{ github.event.inputs.image_registry }}
+        TAG: ${{ github.event.inputs.image_tag }}
       run: |        
+        [ -z "$REGISTRY" ] && echo "::set-output name=registry::${{ github.event.client_payload.image_registry }}" || echo "::set-output name=registry::$REGISTRY"
         [ -z "$TAG" ] && echo "::set-output name=tag::${{ github.event.client_payload.image_tag }}" || echo "::set-output name=tag::$TAG"
 
     - run: |                
-        echo "Tag: (API payload): ${{ steps.variables.outputs.tag }}"
-        
-        
-        
-        # echo "Registry (API payload): ${{ github.event.client_payload.image_registry }}"
-        # 
-        # echo "Registry (manual input): ${{ github.event.inputs.image_registry }}"        
-        # echo "Branch message: ${{ github.event.client_payload.branch }}"
-        # echo "Commit message: ${{ github.event.client_payload.commit_message }}"
-        # echo "Commit SHA: ${{ github.event.client_payload.commit_sha }}"
+        echo "Registry : ${{ steps.variables.outputs.registry }}"
+        echo "Tag: ${{ steps.variables.outputs.tag }}"        
