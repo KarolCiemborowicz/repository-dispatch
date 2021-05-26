@@ -26,6 +26,4 @@ jobs:
         [ -z "$REGISTRY" ] && echo "::set-output name=registry::${{ github.event.client_payload.image_registry }}" || echo "::set-output name=registry::$REGISTRY"
         [ -z "$TAG" ] && echo "::set-output name=tag::${{ github.event.client_payload.image_tag }}" || echo "::set-output name=tag::$TAG"
 
-    - run: |                
-        echo "Registry : ${{ steps.variables.outputs.registry }}"
-        echo "Tag: ${{ steps.variables.outputs.tag }}"        
+    - run: echo Registry ${{ steps.variables.outputs.registry }} tag ${{ steps.variables.outputs.tag }}
