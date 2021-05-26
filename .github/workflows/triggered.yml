@@ -28,7 +28,7 @@ jobs:
       run: |        
         [ -z "$REGISTRY" ] && echo "::set-output name=registry::${{ github.event.client_payload.image_registry }}" || echo "::set-output name=registry::$REGISTRY"
         [ -z "$TAG" ] && echo "::set-output name=tag::${{ github.event.client_payload.image_tag }}" || echo "::set-output name=tag::$TAG"
-        echo "::set-output name=version::["$REGISTRY:$TAG"]"
+        echo "::set-output name=version::[""$REGISTRY:$TAG"""]"
 
   version:
     needs: set-variables
