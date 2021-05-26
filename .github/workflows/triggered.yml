@@ -16,7 +16,7 @@ jobs:
   set-variables:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.variables.outputs.version }}
+      version: ${{ steps.variables.outputs.version }}
 
     steps:
 
@@ -28,9 +28,9 @@ jobs:
       run: |        
         [ -z "$REGISTRY" ] && echo "::set-output name=registry::${{ github.event.client_payload.image_registry }}" || echo "::set-output name=registry::$REGISTRY"
         [ -z "$TAG" ] && echo "::set-output name=tag::${{ github.event.client_payload.image_tag }}" || echo "::set-output name=tag::$TAG"
-        echo "::set-output name=matrix::["$REGISTRY:$TAG"]"
+        echo "::set-output name=version::["$REGISTRY:$TAG"]"
 
-  display:
+  version:
     needs: set-variables
     runs-on: ubuntu-latest
 
@@ -39,4 +39,4 @@ jobs:
         package: ${{ fromJson(needs.set-variables.outputs.version) }}
 
     steps:
-      - run: echo Registry ${{ steps.variables.outputs.registry }} tag ${{ steps.variables.outputs.tag }}
+      - run: echo 
