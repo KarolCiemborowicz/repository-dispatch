@@ -36,7 +36,7 @@ jobs:
 
     # strategy:    
     #   matrix:
-    #     package: ${{ fromJson(needs.set-variables.outputs.version) }}
+    #     version: ${{ fromJson(needs.set-variables.outputs.version) }}
 
     steps:
-      - run: echo ${{ needs.set-variables.outputs.version) }}
+      - run: echo ${{ needs.set-variables.outputs.version }}
