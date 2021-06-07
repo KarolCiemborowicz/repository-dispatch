@@ -21,13 +21,13 @@ jobs:
     steps:
 
     - name: Set variables
-      id: variables
+      id: set-variables
       env:
         REGISTRY: ${{ github.event.inputs.image_registry }}
         TAG: ${{ github.event.inputs.image_tag }}
       run: |-        
-        [ -z "$REGISTRY" ] && $REGISTRY=${{ github.event.client_payload.image_registry }}
-        [ -z "$TAG" ] && $TAG=${{ github.event.client_payload.image_tag }}
+        [ -z "$REGISTRY" ] && REGISTRY=${{ github.event.client_payload.image_registry }}
+        [ -z "$TAG" ] && TAG=${{ github.event.client_payload.image_tag }}
         echo "::set-output name=version::[\""$REGISTRY:$TAG"\"]"
 
   version:
