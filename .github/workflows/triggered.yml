@@ -21,8 +21,12 @@ jobs:
     steps:
 
     - name: Display payload
-      run: |-        
+      env:
+        REGISTRY: ${{ github.event.inputs.image_registry }}
+        TAG: ${{ github.event.inputs.image_tag }}
+      run: |-
         echo ${{ github.event.client_payload.image_registry }}:${{ github.event.client_payload.image_tag }}
+        echo $REGISTRY:$TAG
 
     - name: Set variables
       id: variables
