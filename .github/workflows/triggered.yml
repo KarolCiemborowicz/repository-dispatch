@@ -28,6 +28,7 @@ jobs:
       run: |-        
         [ -z "$REGISTRY" ] && REGISTRY=${{ github.event.client_payload.image_registry }}
         [ -z "$TAG" ] && TAG=${{ github.event.client_payload.image_tag }}
+        echo $REGISTRY:$TAG
         echo "::set-output name=version::[\""$REGISTRY:$TAG"\"]"
 
   version:
