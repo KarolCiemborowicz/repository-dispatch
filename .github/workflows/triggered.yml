@@ -20,22 +20,14 @@ jobs:
 
     steps:
 
-    - name: Display payload
-      env:
-        REGISTRY: ${{ github.event.inputs.image_registry }}
-        TAG: ${{ github.event.inputs.image_tag }}
-      run: |-
-        echo ${{ github.event.client_payload.image_registry }}:${{ github.event.client_payload.image_tag }}
-        echo $REGISTRY:$TAG
-
     - name: Set variables
       id: variables
       env:
         REGISTRY: ${{ github.event.inputs.image_registry }}
         TAG: ${{ github.event.inputs.image_tag }}
       run: |-        
-        [ -z "$REGISTRY" ] && echo "::set-output name=registry::${{ github.event.client_payload.image_registry }}" || echo "::set-output name=registry::$REGISTRY"
-        [ -z "$TAG" ] && echo "::set-output name=tag::${{ github.event.client_payload.image_tag }}" || echo "::set-output name=tag::$TAG"
+        [ -z "$REGISTRY" ] && $REGISTRY=${{ github.event.client_payload.image_registry }}
+        [ -z "$TAG" ] && $TAG=${{ github.event.client_payload.image_tag }}"
         echo "::set-output name=version::[\""$REGISTRY:$TAG"\"]"
 
   version:
