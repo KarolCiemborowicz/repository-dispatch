@@ -31,6 +31,13 @@ jobs:
         echo $REGISTRY:$TAG
         echo "::set-output name=version::[\""$REGISTRY:$TAG"\"]"
 
+  payload:
+    needs: set-variables
+    runs-on: ubuntu-latest
+    
+    steps:
+      - run: echo ${{ needs.set-variables.outputs.version }}
+
   version:
     needs: set-variables
     runs-on: ubuntu-latest
