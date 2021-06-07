@@ -34,9 +34,9 @@ jobs:
   payload:
     needs: set-variables
     runs-on: ubuntu-latest
-    
+
     steps:
-      - run: echo ${{ needs.set-variables.outputs.version }}
+      - run: echo ${{ needs.variables.outputs.version }}
 
   version:
     needs: set-variables
@@ -44,7 +44,7 @@ jobs:
 
     strategy:    
       matrix:
-        version: ${{ fromJson(needs.set-variables.outputs.version) }}
+        version: ${{ fromJson(needs.variables.outputs.version) }}
 
     steps:
       - run: echo ${{ needs.set-variables.outputs.version }}
