@@ -20,23 +20,22 @@ jobs:
 
     steps:
 
-    - name: Set variables
-      id: set-variables
+    - name: Set variables      
       env:
         REGISTRY: ${{ github.event.inputs.image_registry }}
         TAG: ${{ github.event.inputs.image_tag }}
       run: |-        
         [ -z "$REGISTRY" ] && REGISTRY=${{ github.event.client_payload.image_registry }}
-        [ -z "$TAG" ] && TAG=${{ github.event.client_payload.image_tag }}
-        echo $REGISTRY:$TAG
+        [ -z "$TAG" ] && TAG=${{ github.event.client_payload.image_tag }}        
         echo "::set-output name=version::[\""$REGISTRY:$TAG"\"]"
+        echo $REGISTRY:$TAG
 
   payload:
     needs: set-variables
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ needs.variables.outputs.version }}
+      - run: echo ${{ needs.set-variables.outputs.version }}
 
   version:
     needs: set-variables
@@ -44,7 +43,7 @@ jobs:
 
     strategy:    
       matrix:
-        version: ${{ fromJson(needs.variables.outputs.version) }}
+        version: ${{ fromJson(needs.set-variables.outputs.version) }}
 
     steps:
       - run: echo ${{ needs.set-variables.outputs.version }}
