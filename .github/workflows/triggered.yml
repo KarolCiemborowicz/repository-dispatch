@@ -10,6 +10,8 @@ on:
       image_tag:
         description: "Image version to be deployed" 
         required: true       
+env:
+  variable: ""
 
       
 jobs:
@@ -30,13 +32,16 @@ jobs:
         [ -z "$TAG" ] && TAG=${{ github.event.client_payload.image_tag }}        
         echo "::set-output name=version::[\""$REGISTRY:$TAG"\"]"
         echo $REGISTRY:$TAG
+        variable=asd
 
   payload:
     needs: set-variables
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ needs.set-variables.outputs.version }}
+      - run: |-
+        echo ${{ needs.set-variables.outputs.version }}
+        echo $variable
 
   version:
     needs: set-variables
