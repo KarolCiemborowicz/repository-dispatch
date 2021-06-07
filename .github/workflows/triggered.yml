@@ -11,7 +11,7 @@ on:
         description: "Image version to be deployed" 
         required: true       
 env:
-  variable: ""
+  VARIABLE: ""
 
       
 jobs:
@@ -32,7 +32,7 @@ jobs:
         [ -z "$TAG" ] && TAG=${{ github.event.client_payload.image_tag }}        
         echo "::set-output name=version::[\""$REGISTRY:$TAG"\"]"
         echo $REGISTRY:$TAG
-        variable=asd
+        echo "VARIABLE=test" >> $GITHUB_ENV        
 
   payload:
     needs: set-variables
@@ -40,8 +40,8 @@ jobs:
 
     steps:
       - run: |-
-        echo ${{ needs.set-variables.outputs.version }}
-        echo $variable
+          echo ${{ needs.set-variables.outputs.version }}
+          echo ${{ env.VARIABLE }}
 
   version:
     needs: set-variables
